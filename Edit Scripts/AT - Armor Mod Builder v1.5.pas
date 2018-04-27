@@ -1007,7 +1007,7 @@ begin
     end;
     s := StringReplace(StringReplace(StringReplace(Lowercase(slNifList[i]), '_0', '', [rfReplaceAll]), '_1', '', [rfReplaceAll]), '.nif', '', [rfReplaceAll]);
     if (Pos('1st', s) > 0) then begin
-      if (Pos('body', s) > 0) or (Pos('cuirass', s) > 0) or (Pos('outfit', s) > 0) then begin
+      if (Pos('body', s) > 0) or (Pos('cuirass', s) > 0) or (Pos('outfit', s) > 0) or (Pos('torso', s) > 0) or (Pos('dress', s) > 0) or (Pos('robe', s) > 0) or (Pos('clothes', s) > 0) then begin
         if (Pos('male', s) > 0) or (Pos('m', s) > Length(s) - 1) or (Pos('m\', s) > 0) then begin
           slNifTags.Add('fp male cuirass');
           Continue;
@@ -1032,7 +1032,7 @@ begin
         Continue;
       end;
     end;
-    if (Pos('body', s) > 0) or (Pos('cuirass', s) > 0) or (Pos('outfit', s) > 0) then begin
+    if (Pos('body', s) > 0) or (Pos('cuirass', s) > 0) or (Pos('outfit', s) > 0) or (Pos('robe', s) > 0) or (Pos('torso', s) > 0) or (Pos('dress', s) > 0) or (Pos('clothes', s) > 0) then begin
       if (Pos('go', s) > Length(s) - 3) or (Pos('world', s) > 0) or (Pos('gnd', s) > Length(s) - 4)  then begin
         if (Pos('fgo', s) > Length(s) - 4) or (Pos('female', s) > 0) or (Pos('f\', s) > 0) then begin
           slNifTags.Add('female world cuirass');
@@ -1056,7 +1056,7 @@ begin
       slNifTags.Add('cuirass');
       Continue;
     end;
-    if (Pos('feet', s) > 0) or (Pos('boots', s) > 0) or (Pos('greaves', s) > 0) then begin
+    if (Pos('feet', s) > 0) or (Pos('boots', s) > 0) or (Pos('greaves', s) > 0) or (Pos('shoes', s) > 0) then begin
       if (Pos('go', s) > Length(s) - 3) or (Pos('world', s) > 0) or (Pos('gnd', s) > Length(s) - 4) then begin
         if (Pos('fgo', s) > Length(s) - 4) or (Pos('female', s) > 0) or (Pos('f\', s) > 0) then begin
           slNifTags.Add('female world boots');
@@ -1104,7 +1104,7 @@ begin
       slNifTags.Add('gauntlets');
       Continue;
     end;
-    if (Pos('head', s) > 0) or (Pos('helmet', s) > 0) or (Pos('hood', s) > 0) then begin
+    if (Pos('head', s) > 0) or (Pos('helmet', s) > 0) or (Pos('hood', s) > 0) or (Pos('hat', s) > 0) then begin
       if (Pos('go', s) > Length(s) - 3) or (Pos('world', s) > 0) or (Pos('gnd', s) > Length(s) - 4) then begin
         if (Pos('fgo', s) > Length(s) - 4) or (Pos('female', s) > 0) or (Pos('f\', s) > 0) then begin
           slNifTags.Add('female world helmet');
@@ -1201,15 +1201,15 @@ begin
     Add(aaboots, 'Female world model', True);
     Add(aaboots, 'EDID', True);
     Add(aaboots, 'RNAM', True);
-    Add(aaboots, 'BODT', True);
+    Add(aaboots, 'BOD2', True);
     Add(aaboots, 'Additional Races', True);
     Add(aaboots, 'SNDD', True);
     if ArmorType = 'Heavy' then 
       seev(aaboots, 'SNDD', 'FSTArmorHeavyFootstepSet [FSTS:00021487]')
       else seev(aaboots, 'SNDD', 'FSTArmorLightFootstepSet [FSTS:00021486]');
     SetListEditValues(aaboots, 'Additional Races', slAdditionalRaces);
-    seev(aaboots, 'BODT\First Person Flags', '000000011'); // feet and calves flags
-    seev(aaboots, 'BODT\Armor Type', 'Clothing');
+    seev(aaboots, 'BOD2\First Person Flags', '000000011'); // feet and calves flags
+    seev(aaboots, 'BOD2\Armor Type', 'Clothing');
     seev(aaboots, 'DNAM\Weight slider - Male', '01'); // enabled
     seev(aaboots, 'DNAM\Weight slider - Female', '01'); // enabled
     seev(aaboots, 'DNAM\Male Priority', '10');
@@ -1236,11 +1236,11 @@ begin
     Add(aahelmet, 'Female world model', True);
     Add(aahelmet, 'EDID', True);
     Add(aahelmet, 'RNAM', True);
-    Add(aahelmet, 'BODT', True);
+    Add(aahelmet, 'BOD2', True);
     Add(aahelmet, 'Additional Races', True);
     SetListEditValues(aahelmet, 'Additional Races', slAdditionalRaces);
-    seev(aahelmet, 'BODT\First Person Flags', '010000000001'); // hair and long hair flags
-    seev(aahelmet, 'BODT\Armor Type', 'Clothing');
+    seev(aahelmet, 'BOD2\First Person Flags', '010000000001'); // hair and long hair flags
+    seev(aahelmet, 'BOD2\Armor Type', 'Clothing');
     seev(aahelmet, 'DNAM\Weight slider - Male', '01'); // enabled
     seev(aahelmet, 'DNAM\Weight slider - Female', '01'); // enabled
     seev(aahelmet, 'DNAM\Male Priority', '10');
@@ -1267,14 +1267,14 @@ begin
     Add(aacuirass, 'Female world model', True);
     Add(aacuirass, 'EDID', True);
     Add(aacuirass, 'RNAM', True);
-    Add(aacuirass, 'BODT', True);
+    Add(aacuirass, 'BOD2', True);
     Add(aacuirass, 'Additional Races', True);
     SetListEditValues(aacuirass, 'Additional Races', slAdditionalRaces);
-    seev(aacuirass, 'BODT\First Person Flags', '001010001'); // body, forearms, and calves flags
-    seev(aacuirass, 'BODT\Armor Type', 'Clothing');
+    seev(aacuirass, 'BOD2\First Person Flags', '001010001'); // body, forearms, and calves flags
+    seev(aacuirass, 'BOD2\Armor Type', 'Clothing');
     seev(aacuirass, 'DNAM\Weight slider - Male', '01'); // enabled
     seev(aacuirass, 'DNAM\Weight slider - Female', '01'); // enabled
-    seev(aacuriass, 'DNAM\Male Priority', '5');
+    seev(aacuirass, 'DNAM\Male Priority', '5');
     seev(aacuirass, 'DNAM\Female Priority', '5');
     seev(aacuirass, 'EDID', edidprefix+'CuirassAA');
     seev(aacuirass, 'RNAM', 'DefaultRace "Default Race" [RACE:00000019]');
@@ -1314,11 +1314,11 @@ begin
     Add(aagloves, 'Female world model', True);
     Add(aagloves, 'EDID', True);
     Add(aagloves, 'RNAM', True);
-    Add(aagloves, 'BODT', True);
+    Add(aagloves, 'BOD2', True);
     Add(aagloves, 'Additional Races', True);
     SetListEditValues(aagloves, 'Additional Races', slAdditionalRaces);
-    seev(aagloves, 'BODT\First Person Flags', '0001101'); // hands, forearms, and ring flags
-    seev(aagloves, 'BODT\Armor Type', 'Clothing');
+    seev(aagloves, 'BOD2\First Person Flags', '0001101'); // hands, forearms, and ring flags
+    seev(aagloves, 'BOD2\Armor Type', 'Clothing');
     seev(aagloves, 'DNAM\Weight slider - Male', '01'); // enabled
     seev(aagloves, 'DNAM\Weight slider - Female', '01'); // enabled
     seev(aagloves, 'DNAM\Male Priority', '10');
@@ -1361,7 +1361,7 @@ begin
     Add(aahelmetarg, 'Female world model', True);
     Add(aahelmetarg, 'EDID', True);
     Add(aahelmetarg, 'RNAM', True);
-    Add(aahelmetarg, 'BODT', True);
+    Add(aahelmetarg, 'BOD2', True);
     Add(aahelmetarg , 'Additional Races', True);
     seev(aahelmetarg, 'Additional Races\[0]', 'ArgonianRaceVampire "Argonian" [RACE:0008883A]');
     for i := 0 to ElementCount(ElementByPath(aahelmet, 'Additional Races')) - 1 do
@@ -1374,8 +1374,8 @@ begin
         Remove(ElementByIndex(ElementByPath(aahelmet, 'Additional Races'), i));
         Break;
       end;
-    seev(aahelmetarg, 'BODT\First Person Flags', '010000000001'); // hair and long hair flags
-    seev(aahelmetarg, 'BODT\Armor Type', 'Clothing');
+    seev(aahelmetarg, 'BOD2\First Person Flags', '010000000001'); // hair and long hair flags
+    seev(aahelmetarg, 'BOD2\Armor Type', 'Clothing');
     seev(aahelmetarg, 'DNAM\Weight slider - Male', '01'); // enabled
     seev(aahelmetarg, 'DNAM\Weight slider - Female', '01'); // enabled
     seev(aahelmetarg, 'DNAM\Male Priority', '10');
@@ -1402,11 +1402,11 @@ begin
     Add(aahelmetorc, 'Female world model', True);
     Add(aahelmetorc, 'EDID', True);
     Add(aahelmetorc, 'RNAM', True);
-    Add(aahelmetorc, 'BODT', True);
+    Add(aahelmetorc, 'BOD2', True);
     Add(aahelmetorc, 'Additional Races', True);
     seev(aahelmetorc, 'Additional Races\[0]', 'OrcRaceVampire "Orc" [RACE:000A82B9]');
-    seev(aahelmetorc, 'BODT\First Person Flags', '010000000001'); // hair and long hair flags
-    seev(aahelmetorc, 'BODT\Armor Type', 'Clothing');
+    seev(aahelmetorc, 'BOD2\First Person Flags', '010000000001'); // hair and long hair flags
+    seev(aahelmetorc, 'BOD2\Armor Type', 'Clothing');
     seev(aahelmetorc, 'DNAM\Weight slider - Male', '01'); // enabled
     seev(aahelmetorc, 'DNAM\Weight slider - Female', '01'); // enabled
     seev(aahelmetorc, 'DNAM\Male Priority', '10');
@@ -1433,7 +1433,7 @@ begin
     Add(aahelmetkha, 'Female world model', True);
     Add(aahelmetkha, 'EDID', True);
     Add(aahelmetkha, 'RNAM', True);
-    Add(aahelmetkha, 'BODT', True);
+    Add(aahelmetkha, 'BOD2', True);
     Add(aahelmetkha, 'Additional Races', True);
     seev(aahelmetkha, 'Additional Races\[0]', 'KhajiitRaceVampire "Khajiit" [RACE:00088845]');
     for i := 0 to ElementCount(ElementByPath(aahelmet, 'Additional Races')) - 1 do 
@@ -1446,8 +1446,8 @@ begin
         Remove(ElementByIndex(ElementByPath(aahelmet, 'Additional Races'), i));
         Break;
       end;
-    seev(aahelmetkha, 'BODT\First Person Flags', '010000000001'); // hair and long hair flags
-    seev(aahelmetkha, 'BODT\Armor Type', 'Clothing');
+    seev(aahelmetkha, 'BOD2\First Person Flags', '010000000001'); // hair and long hair flags
+    seev(aahelmetkha, 'BOD2\Armor Type', 'Clothing');
     seev(aahelmetkha, 'DNAM\Weight slider - Male', '01'); // enabled
     seev(aahelmetkha, 'DNAM\Weight slider - Female', '01'); // enabled
     seev(aahelmetkha, 'DNAM\Male Priority', '10');
@@ -1473,11 +1473,11 @@ begin
     Add(aashield, 'Male world model', True);
     Add(aashield, 'EDID', True);
     Add(aashield, 'RNAM', True);
-    Add(aashield, 'BODT', True);
+    Add(aashield, 'BOD2', True);
     Add(aashield, 'Additional Races', True);
     SetListEditValues(aashield, 'Additional Races', slAdditionalRaces);
-    seev(aashield, 'BODT\First Person Flags', '0000000001'); // shield flag
-    seev(aashield, 'BODT\Armor Type', 'Clothing');
+    seev(aashield, 'BOD2\First Person Flags', '0000000001'); // shield flag
+    seev(aashield, 'BOD2\Armor Type', 'Clothing');
     seev(aashield, 'DNAM\Male Priority', '0');
     seev(aashield, 'DNAM\Female Priority', '0');
     seev(aashield, 'EDID', edidprefix+'ShieldAA');
@@ -1490,10 +1490,10 @@ begin
     Add(aacloak, 'Male world model', True);
     Add(aacloak, 'EDID', True);
     Add(aacloak, 'RNAM', True);
-    Add(aacloak, 'BODT', True);
+    Add(aacloak, 'BOD2', True);
     Add(aashield, 'Additional Races', True);
     SetListEditValues(aashield, 'Additional Races', slAdditionalRaces);
-    seev(aacloak, 'BODT\Armor Type', 'Clothing');
+    seev(aacloak, 'BOD2\Armor Type', 'Clothing');
     seev(aacloak, 'DNAM\Male Priority', '10');
     seev(aacloak, 'DNAM\Female Priority', '10');
     seev(aacloak, 'EDID', edidprefix+'CloakAA');
@@ -1508,7 +1508,7 @@ begin
     Add(arboots, 'EDID', True);
     Add(arboots, 'FULL', True);
     Add(arboots, 'Male world model', True);
-    Add(arboots, 'BODT', True);
+    Add(arboots, 'BOD2', True);
     Add(arboots, 'RNAM', True);
     Add(arboots, 'KSIZ', True);
     Add(arboots, 'KWDA', True);
@@ -1534,7 +1534,7 @@ begin
       seev(arboots, 'Female world model\MOD3', idir + slNifList[slNifTags.IndexOf('world boots')]);
     if (slNifTags.IndexOf('male world boots') > -1) then 
       seev(arboots, 'Female world model\MOD3', idir + slNifList[slNifTags.IndexOf('male world boots')]);
-    seev(arboots, 'BODT\First Person Flags', '00000001'); // feet flag
+    seev(arboots, 'BOD2\First Person Flags', '00000001'); // feet flag
     seev(arboots, 'RNAM', 'DefaultRace "Default Race" [RACE:00000019]');
     if (ArmorType = 'Clothing') then 
       seev(arboots, 'KWDA\[0]', 'VendorItemClothing [KYWD:0008F95B]')
@@ -1550,15 +1550,15 @@ begin
       seev(arboots, 'KSIZ', '3');
     element := ElementAssign(ElementByPath(arboots, 'KWDA'), HighInteger, nil, False);
     if SameText(ArmorType, 'Light Armor') then begin 
-      seev(arboots, 'BODT\Armor Type', 'Light Armor');
+      seev(arboots, 'BOD2\Armor Type', 'Light Armor');
       SetEditValue(element, 'ArmorLight [KYWD:0006BBD3] ');
     end;
     if SameText(ArmorType, 'Heavy Armor') then begin
-      seev(arboots, 'BODT\Armor Type', 'Heavy Armor');
+      seev(arboots, 'BOD2\Armor Type', 'Heavy Armor');
       SetEditValue(element, 'ArmorHeavy [KYWD:0006BBD2]');
     end;
     if SameText(ArmorType, 'Clothing') then begin
-      seev(arboots, 'BODT\Armor Type', 'Clothing');
+      seev(arboots, 'BOD2\Armor Type', 'Clothing');
       SetEditValue(element, 'ArmorClothing [KYWD:0006BBE8]');
     end;
     seev(arboots, 'Armature\[0]', name(aaboots));
@@ -1579,7 +1579,7 @@ begin
     Add(argloves, 'EDID', True);
     Add(argloves, 'FULL', True);
     Add(argloves, 'Male world model', True);
-    Add(argloves, 'BODT', True);
+    Add(argloves, 'BOD2', True);
     Add(argloves, 'RNAM', True);
     Add(argloves, 'KSIZ', True);
     Add(argloves, 'KWDA', True);
@@ -1605,7 +1605,7 @@ begin
       seev(argloves, 'Female world model\MOD3', idir + slNifList[slNifTags.IndexOf('world gauntlets')]);
     if (slNifTags.IndexOf('male world gauntlets') > -1) then 
       seev(argloves, 'Female world model\MOD3', idir + slNifList[slNifTags.IndexOf('male world gauntlets')]);
-    seev(argloves, 'BODT\First Person Flags', '0001'); // hands flag
+    seev(argloves, 'BOD2\First Person Flags', '0001'); // hands flag
     seev(argloves, 'RNAM', 'DefaultRace "Default Race" [RACE:00000019]');
     if (ArmorType = 'Clothing') then 
       seev(argloves, 'KWDA\[0]', 'VendorItemClothing [KYWD:0008F95B]')
@@ -1621,18 +1621,18 @@ begin
       seev(argloves, 'KSIZ', '3');
     element := ElementAssign(ElementByPath(argloves, 'KWDA'), HighInteger, nil, False);
     if SameText(ArmorType, 'Light Armor') then begin 
-      seev(argloves, 'BODT\Armor Type', 'Light Armor');
+      seev(argloves, 'BOD2\Armor Type', 'Light Armor');
       SetEditValue(element, 'ArmorLight [KYWD:0006BBD3]');
     end;
     if SameText(ArmorType, 'Heavy Armor') then begin
-      seev(argloves, 'BODT\Armor Type', 'Heavy Armor');
+      seev(argloves, 'BOD2\Armor Type', 'Heavy Armor');
       SetEditValue(element, 'ArmorHeavy [KYWD:0006BBD2]');
       element := ElementAssign(ElementByPath(argloves, 'KWDA'), HighInteger, nil, False);
       SetPerkFistsKeyword(element, ArmorMaterial);
       seev(argloves, 'KSIZ', IntToStr(ElementCount(ElementByPath(argloves, 'KWDA'))));
     end;
     if SameText(ArmorType, 'Clothing') then begin
-      seev(argloves, 'BODT\Armor Type', 'Clothing');
+      seev(argloves, 'BOD2\Armor Type', 'Clothing');
       SetEditValue(element, 'ArmorClothing [KYWD:0006BBE8]');
     end;
     seev(argloves, 'Armature\[0]', name(aagloves));
@@ -1653,7 +1653,7 @@ begin
     Add(arhelmet, 'EDID', True);
     Add(arhelmet, 'FULL', True);
     Add(arhelmet, 'Male world model', True);
-    Add(arhelmet, 'BODT', True);
+    Add(arhelmet, 'BOD2', True);
     Add(arhelmet, 'RNAM', True);
     Add(arhelmet, 'KSIZ', True);
     Add(arhelmet, 'KWDA', True);
@@ -1679,7 +1679,7 @@ begin
       seev(arhelmet, 'Female world model\MOD3', idir + slNifList[slNifTags.IndexOf('world helmet')]);
     if (slNifTags.IndexOf('male world helmet') > -1) then 
       seev(arhelmet, 'Female world model\MOD3', idir + slNifList[slNifTags.IndexOf('male world helmet')]);
-    seev(arhelmet, 'BODT\First Person Flags', '0100000000001'); // hair and circlet flags
+    seev(arhelmet, 'BOD2\First Person Flags', '0100000000001'); // hair and circlet flags
     seev(arhelmet, 'RNAM', 'DefaultRace "Default Race" [RACE:00000019]');
     if (ArmorType = 'Clothing') then 
       seev(arhelmet, 'KWDA\[0]', 'VendorItemClothing [KYWD:0008F95B]')
@@ -1695,15 +1695,15 @@ begin
       seev(arhelmet, 'KSIZ', '3');
     element := ElementAssign(ElementByPath(arhelmet, 'KWDA'), HighInteger, nil, False);
     if SameText(ArmorType, 'Light Armor') then begin 
-      seev(arhelmet, 'BODT\Armor Type', 'Light Armor');
+      seev(arhelmet, 'BOD2\Armor Type', 'Light Armor');
       SetEditValue(element, 'ArmorLight [KYWD:0006BBD3] ');
     end;
     if SameText(ArmorType, 'Heavy Armor') then begin
-      seev(arhelmet, 'BODT\Armor Type', 'Heavy Armor');
+      seev(arhelmet, 'BOD2\Armor Type', 'Heavy Armor');
       SetEditValue(element, 'ArmorHeavy [KYWD:0006BBD2]');
     end;
     if SameText(ArmorType, 'Clothing') then begin
-      seev(arhelmet, 'BODT\Armor Type', 'Clothing');
+      seev(arhelmet, 'BOD2\Armor Type', 'Clothing');
       SetEditValue(element, 'ArmorClothing [KYWD:0006BBE8]');
     end;
     seev(arhelmet, 'Armature\[0]', name(aahelmet));
@@ -1736,7 +1736,7 @@ begin
     Add(arcuirass, 'EDID', True);
     Add(arcuirass, 'FULL', True);
     Add(arcuirass, 'Male world model', True);
-    Add(arcuirass, 'BODT', True);
+    Add(arcuirass, 'BOD2', True);
     Add(arcuirass, 'RNAM', True);
     Add(arcuirass, 'KSIZ', True);
     Add(arcuirass, 'KWDA', True);
@@ -1762,7 +1762,7 @@ begin
       seev(arcuirass, 'Female world model\MOD3', idir + slNifList[slNifTags.IndexOf('world cuirass')]);
     if (slNifTags.IndexOf('male world cuirass') > -1) then 
       seev(arcuirass, 'Female world model\MOD3', idir + slNifList[slNifTags.IndexOf('male world cuirass')]);
-    seev(arcuirass, 'BODT\First Person Flags', '001'); // body flag
+    seev(arcuirass, 'BOD2\First Person Flags', '001'); // body flag
     seev(arcuirass, 'RNAM', 'DefaultRace "Default Race" [RACE:00000019]');
     if (ArmorType = 'Clothing') then 
       seev(arcuirass, 'KWDA\[0]', 'VendorItemClothing [KYWD:0008F95B]')
@@ -1778,15 +1778,15 @@ begin
       seev(arcuirass, 'KSIZ', '3');
     element := ElementAssign(ElementByPath(arcuirass, 'KWDA'), HighInteger, nil, False);
     if SameText(ArmorType, 'Light Armor') then begin 
-      seev(arcuirass, 'BODT\Armor Type', 'Light Armor');
+      seev(arcuirass, 'BOD2\Armor Type', 'Light Armor');
       SetEditValue(element, 'ArmorLight [KYWD:0006BBD3] ');
     end;
     if SameText(ArmorType, 'Heavy Armor') then begin
-      seev(arcuirass, 'BODT\Armor Type', 'Heavy Armor');
+      seev(arcuirass, 'BOD2\Armor Type', 'Heavy Armor');
       SetEditValue(element, 'ArmorHeavy [KYWD:0006BBD2]');
     end;
     if SameText(ArmorType, 'Clothing') then begin
-      seev(arcuirass, 'BODT\Armor Type', 'Clothing');
+      seev(arcuirass, 'BOD2\Armor Type', 'Clothing');
       SetEditValue(element, 'ArmorClothing [KYWD:0006BBE8]');
     end;
     seev(arcuirass, 'Armature\[0]', name(aacuirass));
@@ -1807,7 +1807,7 @@ begin
     Add(arshield, 'EDID', True);
     Add(arshield, 'FULL', True);
     Add(arshield, 'Male world model', True);
-    Add(arshield, 'BODT', True);
+    Add(arshield, 'BOD2', True);
     Add(arshield, 'ETYP', True);
     Add(arshield, 'BIDS', True);
     Add(arshield, 'BAMT', True);
@@ -1826,19 +1826,19 @@ begin
     seev(arshield, 'FULL', prefix+' Shield');
     if (slNifTags.IndexOf('shield') > -1) then 
       seev(arshield, 'Male world model\MOD2', idir + slNifList[slNifTags.IndexOf('shield')]);
-    seev(arshield, 'BODT\First Person Flags', '0000000001'); // shield flag
+    seev(arshield, 'BOD2\First Person Flags', '0000000001'); // shield flag
     if SameText(ArmorType, 'Light Armor') then begin 
-      seev(arshield, 'BODT\Armor Type', 'Light Armor');
+      seev(arshield, 'BOD2\Armor Type', 'Light Armor');
       seev(arshield, 'BIDS', 'WPNBashShieldHeavyImpactSet [IPDS:000183FE]');
       seev(arshield, 'BAMT', 'MaterialShieldHeavy [MATT:00016979]');
     end;
     if SameText(ArmorType, 'Heavy Armor') then begin
-      seev(arshield, 'BODT\Armor Type', 'Heavy Armor');
+      seev(arshield, 'BOD2\Armor Type', 'Heavy Armor');
       seev(arshield, 'BIDS', 'WPNBashShieldLightImpactSet [IPDS:000183FB]');
       seev(arshield, 'BAMT', 'MaterialShieldLight [MATT:00016978]');
     end;
     if SameText(ArmorType, 'Clothing') then begin
-      seev(arshield, 'BODT\Armor Type', 'Clothing');
+      seev(arshield, 'BOD2\Armor Type', 'Clothing');
       seev(arshield, 'BIDS', 'WPNBashShieldHeavyImpactSet [IPDS:000183FE]');
       seev(arshield, 'BAMT', 'MaterialShieldHeavy [MATT:00016979]');
     end;
@@ -1872,7 +1872,7 @@ begin
     Add(arcloak, 'EDID', True);
     Add(arcloak, 'FULL', True);
     Add(arcloak, 'Male world model', True);
-    Add(arcloak, 'BODT', True);
+    Add(arcloak, 'BOD2', True);
     Add(arcloak, 'RNAM', True);
     Add(arcloak, 'KSIZ', True);
     Add(arcloak, 'KWDA', True);
@@ -1882,7 +1882,7 @@ begin
     seev(arcloak, 'FULL', prefix+' Cloak');
     if (slNifTags.IndexOf('cloak') > -1) then 
       seev(arcloak, 'Male world model\MOD2', idir + slNifList[slNifTags.IndexOf('cloak')]);
-    seev(arcloak, 'BODT\First Person Flags', '00001'); // ? flag
+    seev(arcloak, 'BOD2\First Person Flags', '00001'); // ? flag
     seev(arcloak, 'RNAM', 'DefaultRace "Default Race" [RACE:00000019]');
     if (ArmorType = 'Clothing') then 
       seev(arcloak, 'KWDA\[0]', 'VendorItemClothing [KYWD:0008F95B]')
@@ -1896,15 +1896,15 @@ begin
       seev(arcloak, 'KSIZ', '2');
     element := ElementAssign(ElementByPath(arcloak, 'KWDA'), HighInteger, nil, False);
     if SameText(ArmorType, 'Light Armor') then begin 
-      seev(arcloak, 'BODT\Armor Type', 'Light Armor');
+      seev(arcloak, 'BOD2\Armor Type', 'Light Armor');
       SetEditValue(element, 'ArmorLight [KYWD:0006BBD3] ');
     end;
     if SameText(ArmorType, 'Heavy Armor') then begin
-      seev(arcloak, 'BODT\Armor Type', 'Heavy Armor');
+      seev(arcloak, 'BOD2\Armor Type', 'Heavy Armor');
       SetEditValue(element, 'ArmorHeavy [KYWD:0006BBD2]');
     end;
     if SameText(ArmorType, 'Clothing') then begin
-      seev(arcloak, 'BODT\Armor Type', 'Clothing');
+      seev(arcloak, 'BOD2\Armor Type', 'Clothing');
       SetEditValue(element, 'ArmorClothing [KYWD:0006BBE8]');
     end;
     seev(arcloak, 'Armature\[0]', name(aacloak));
